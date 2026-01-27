@@ -1,4 +1,6 @@
 parameters:
+    freecurrencyapi.base_url: '%env(FREECURRENCYAPI_BASE_URL)%'
+    freecurrencyapi.api_key: '%env(FREECURRENCYAPI_KEY)%'
 
 services:
     _defaults:
@@ -15,3 +17,8 @@ services:
     App\Controller\:
         resource: '../src/Controller/'
         tags: ['controller.service_arguments']
+
+    App\Service\FreeCurrencyApi\FreeCurrencyApiClient:
+        arguments:
+            $baseUrl: '%freecurrencyapi.base_url%'
+            $apiKey: '%freecurrencyapi.api_key%'

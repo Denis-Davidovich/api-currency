@@ -6,11 +6,12 @@ services:
     volumes:
       - .:/var/www/html
       - ./docker/php/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
+      - ./.data:/var/www/html/.data
     environment:
       PHP_IDE_CONFIG: "serverName=api-currency"
       XDEBUG_MODE: "debug,develop"
       XDEBUG_CONFIG: "client_host=host.docker.internal"
-      VIRTUAL_HOST: api-currency.docker
+      VIRTUAL_HOST: api-currency.docker,api-currency.monopoly-gold.com
     extra_hosts:
       - "host.docker.internal:host-gateway"
 

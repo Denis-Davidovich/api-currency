@@ -1,0 +1,26 @@
+security:
+    password_hashers:
+        Symfony\Component\Security\Core\User\InMemoryUser: plaintext
+
+    providers:
+        in_memory:
+            memory:
+                users:
+                    admin:
+                        password: admin
+                        roles: ['ROLE_ADMIN']
+
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        admin:
+            pattern: ^/admin
+            http_basic:
+                realm: Admin Area
+            provider: in_memory
+        main:
+            lazy: true
+
+    access_control:
+        - { path: ^/admin, roles: ROLE_ADMIN }

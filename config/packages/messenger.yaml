@@ -1,0 +1,7 @@
+framework:
+    messenger:
+        transports:
+            scheduler_exchange_rates: 'sync://'
+
+        routing:
+            'App\Scheduler\UpdateExchangeRatesMessage': scheduler_exchange_rates

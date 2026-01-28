@@ -92,6 +92,7 @@ class ExchangeRate
     public function setRate(string $rate): self
     {
         $this->rate = $rate;
+        $this->updatedAt = new \DateTimeImmutable();
         return $this;
     }
 
